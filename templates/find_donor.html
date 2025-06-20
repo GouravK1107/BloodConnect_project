@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BloodConnect - Every Drop Saves a Life</title>
+    <meta name="description" content="Emergency blood donation platform - Find blood donors nearby within seconds" />
+    <meta name="author" content="BloodConnect" />
+
+    <meta property="og:title" content="BloodConnect - Every Drop Saves a Life" />
+    <meta property="og:description"
+        content="Emergency blood donation platform - Find blood donors nearby within seconds" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image"
+        content="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=1200&h=630&fit=crop" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image"
+        content="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=1200&h=630&fit=crop" />
+
+    <!-- Google Fonts -->
+    <!-- Font Awesome CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-tint"></i>
+                <span>BloodConnect</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="/templates/homepage.html" class="nav-link">Home</a></li>
+                <li><a href="/templates/find_donor.html" class="nav-link">Find Donor</a></li>
+                <li><a href="/templates/become_donor.html" class="nav-link">Become a Donor</a></li>
+                <li><a href="/templates/blood_bank.html" class="nav-link">Blood Bank Info</a></li>
+                <li><a href="/templates/hospital_info.html" class="nav-link">Hospital Info</a></li>
+                <li><a href="/templates/contact.html" class="nav-link">Contact Us</a></li>
+            </ul>
+            <button class="mobile-menu-toggle">☰</button>
+        </div>
+    </nav>
+
+    <section class="donor-search">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1>Find Blood Donors</h1>
+            <p>Search for blood donors in your area and connect with them instantly</p>
+        </div>
+
+        <!-- Search Form -->
+        <div class="search-card">
+            <form class="search-form" id="searchForm">
+                <div class="form-group">
+                    <label for="bloodGroup">Blood Group</label>
+                    <select id="bloodGroup" name="bloodGroup">
+                        <option value="">Select blood group</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="location">City or Pincode</label>
+                    <input type="text" id="location" name="location" placeholder="Enter city or pincode">
+                </div>
+                <button type="submit" class="search-btn" id="searchBtn">
+                    <i class="fas fa-search"></i>
+                    <span>Search Donors</span>
+                </button>
+            </form>
+        </div>
+
+        <!-- Results Section -->
+        <div id="resultsSection">
+            <!-- Loading State -->
+            <div id="loadingState" class="loading-state" style="display: none;">
+                <div class="loading-spinner"></div>
+                <p>Searching for donors...</p>
+            </div>
+
+            <!-- Results Header -->
+            <div id="resultsHeader" class="results-header" style="display: none;">
+                <h2 id="resultsCount">Found 0 donors</h2>
+                <p>Connect with donors below</p>
+            </div>
+
+            <!-- Donors Grid -->
+            <div id="donorsGrid" class="donors-grid"></div>
+
+            <!-- No Results -->
+            <div id="noResults" class="no-results" style="display: none;">
+                <i class="fas fa-tint"></i>
+                <h3>No donors found</h3>
+                <p>We couldn't find any donors matching your criteria. Try adjusting your search parameters.</p>
+                <button class="clear-btn" onclick="clearSearch()">Clear Search</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>BloodConnect</h3>
+                    <p>Connecting lives through blood donation. Every drop counts, every donor matters.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="/templates/homepage.html">Home</a></li>
+                        <li><a href="/templates/find_donor.html">Find Donor</a></li>
+                        <li><a href="/templates/become_donor.html">Become a Donor</a></li>
+                        <li><a href="/templates/blood_bank.html">Blood Bank Info</a></li>
+                        <li><a href="/templates/hospital_info.html">Hospital Info</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="/templates/contact.html">Contact Us</a></li>
+                        <li><a href="/templates/about.html">About Us</a></li>
+                        <li><a href="/templates/privacy.html">Privacy Policy</a></li>
+                        <li><a href="/templates/ToS.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Emergency</h3>
+                    <ul class="footer-links">
+                        <li><a href="tel:911">Emergency: 911</a></li>
+                        <li><a href="#">24/7 Support</a></li>
+                        <li><a href="#">Blood Bank Directory</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 BloodConnect. All rights reserved. | This is a non-commercial platform dedicated to
+                    facilitating voluntary blood donation. Always consult medical professionals for health-related
+                    decisions.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="/static/js/homepage.js"></script>
+    <script src="/static/js/find_donor.js"></script>
+</body>
+
+</html>
